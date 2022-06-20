@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
-<title>Animal Orders</title>
+<title>Tambah Tempahan Haiwan</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -14,12 +14,12 @@
 		<nav class="navbar navbar-expand-md navbar-dark"
 			style="background-color: tomato">
 			<div>
-				<a href="https://www.javaguides.net" class="navbar-brand"> Animal Orders Section </a>
+				<a href="https://www.javaguides.net" class="navbar-brand"> Tempahan Haiwan </a>
 			</div>
 
 			<ul class="navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/list"
-					class="nav-link">Animal Order List</a></li>
+					class="nav-link">Senarai Tempahan Haiwan</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -37,10 +37,10 @@
 				<caption>
 					<h2>
 						<c:if test="${animalOrder != null}">
-            			Edit Animal Order
+            			Ubah Tempahan Haiwan
             		</c:if>
 						<c:if test="${animalOrder == null}">
-            			Add New Animal Order
+            			Tambah Tempahan Haiwan Baru
             		</c:if>
 					</h2>
 				</caption>
@@ -50,29 +50,29 @@
 				</c:if>
 
 				<fieldset class="form-group">
-					<label>Animal Type</label> <input type="text"
+					<label>Jenis Haiwan</label> <input type="text"
 						value="<c:out value='${animalOrder.animalOrderType}' />" class="form-control"
 						name="animalOrderType">
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label>Animal Price</label> <input type="number"
+					<label>Harga Bahagian</label> <input type="number"
 						value="<c:out value='${animalOrder.animalOrderPrice}' />" class="form-control"
 						name="animalOrderPrice">
 				</fieldset>
 
 				<fieldset class="form-group">
-					<label>Dependent Name</label> <input type="text"
+					<label>Nama Tanggungan</label> <input type="text"
 						value="<c:out value='${animalOrder.dependentName}' />" class="form-control"
 						name="dependentName">
 				</fieldset>
 				<fieldset class="form-group">
-					<label>Supplier Name</label> <input type="text"
+					<label>Nama Pembekal</label> <input type="text"
 						value="<c:out value='${animalOrder.supplierName}' />" class="form-control"
 						name="supplierName">
 				</fieldset>
 
-				<button type="submit" class="btn btn-success">Save</button>
+				<button type="submit" class="btn btn-success">Tambah</button>
 				</form>
 				
 			</div>
