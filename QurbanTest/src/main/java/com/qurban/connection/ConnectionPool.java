@@ -41,11 +41,11 @@ public class ConnectionPool {
 			e1.printStackTrace();
 		}
 
-		String username = "postgres";
-		String password = "system";
+		String username = "kyayppqzhldtcq";
+		String password = "1d059bfbd68536ca18008409a21d767cbfc2062e05a0e9386362d60ee26a7ed2";
 		String dbUrl = "jdbc:postgresql://"
-						+ "localhost:5432"
-						+ "/QurbanDAOTest"; // '?sslmode=require' : it's to connect to the database from our machine
+						+ "ec2-52-22-136-117.compute-1.amazonaws.com:5432"
+						+ "/ddts7lotslrr09?sslmode=require"; // '?sslmode=require' : it's to connect to the database from our machine
 		
 		try {
 			return DriverManager.getConnection(dbUrl, username, password);
