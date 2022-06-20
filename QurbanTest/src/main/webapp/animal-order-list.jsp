@@ -59,7 +59,7 @@
 							<td><c:out value="${animalOrder.dependentName}" /></td>
 							<td>
 							<c:if test="${animalOrder.supplierName == null}">
-								<c:out value="No Supplier" />
+								<c:out value="Tiada Pembekal" />
 							</c:if>	
 							<c:if test="${animalOrder.supplierName != null}">
 								<c:out value="${animalOrder.supplierName}" />
