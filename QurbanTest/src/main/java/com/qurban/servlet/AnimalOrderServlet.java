@@ -148,7 +148,7 @@ public class AnimalOrderServlet extends HttpServlet {
 		
 	}
 	
-	// Show edit form
+	// Show edit form..
 	private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		

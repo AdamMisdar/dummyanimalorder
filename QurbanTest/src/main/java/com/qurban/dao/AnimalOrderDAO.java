@@ -106,7 +106,7 @@ public class AnimalOrderDAO {
 			AnimalOrder animalOrder = null;
 
 			try(
-				// Step 1: Establishing a Connection
+				// Step 1: Establishing a Connection..
 				Connection connection = ConnectionPool.getInstance().getConnection();
 					
 				// Step 2 : Make PreparedStatement

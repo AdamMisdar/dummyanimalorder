@@ -8,7 +8,7 @@ public class ConnectionPool {
 		
 	}
 	
-	// Connection instance
+	// Connection instance..
 	private Connection connection = getConnection();
 	
 	private static ConnectionPool instance = null;

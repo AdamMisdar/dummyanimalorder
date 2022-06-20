@@ -37,11 +37,7 @@ public class AnimalOrder {
 		this.supplierName = supplierName;
 	}
 
-	
-	
-	
-	
-	
+	//..
 	
 	public int getAnimalOrderID() {
 		return animalOrderID;
