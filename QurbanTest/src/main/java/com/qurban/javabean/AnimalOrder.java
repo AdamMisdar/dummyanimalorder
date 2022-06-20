@@ -19,20 +19,22 @@ public class AnimalOrder {
 		this.bookingID = bookingID;
 	}
 
-	public AnimalOrder(String animalOrderType, double animalOrderPrice, String dependentName) {
+	public AnimalOrder(String animalOrderType, double animalOrderPrice, String dependentName, String supplierName) {
 		super();
 		this.animalOrderType = animalOrderType;
 		this.animalOrderPrice = animalOrderPrice;
 		this.dependentName = dependentName;
+		this.supplierName = supplierName;
 	}
 	
 
-	public AnimalOrder(int animalOrderID, String animalOrderType, double animalOrderPrice, String dependentName) {
+	public AnimalOrder(int animalOrderID, String animalOrderType, double animalOrderPrice, String dependentName, String supplierName) {
 		super();
 		this.animalOrderID = animalOrderID;
 		this.animalOrderType = animalOrderType;
 		this.animalOrderPrice = animalOrderPrice;
 		this.dependentName = dependentName;
+		this.supplierName = supplierName;
 	}
 
 	

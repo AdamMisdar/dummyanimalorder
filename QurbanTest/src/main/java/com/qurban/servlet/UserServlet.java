@@ -11,7 +11,7 @@ import com.qurban.dao.*;
 import com.qurban.javabean.User;
 
 
-@WebServlet("/")
+@WebServlet("/kjhsdkajhdkahkd")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private UserDAO userDAO;

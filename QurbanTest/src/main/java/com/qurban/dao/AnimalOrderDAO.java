@@ -11,26 +11,26 @@ public class AnimalOrderDAO {
 	
 	//Defining final SQL Statements
 	private static final String INSERT_ANIMAL_ORDER = // Insert new animal order
-	"INSERT INTO AnimalOrder(animalOrderType, animalOrderPrice, dependentName) " +
-	"VALUES (?, ?, ?);";
+	"INSERT INTO animalorder(animalOrderType, animalOrderPrice, dependentName, supplierName ) " +
+	"VALUES (?, ?, ?, ?);";
 	
 	private static final String SELECT_ANIMAL_ORDER_BY_ID = // Select 1 animal order by id
-	"SELECT animalOrderID, animalOrderType, animalOrderPrice, dependentName " +
-	"FROM AnimalOrder " +
+	"SELECT animalOrderID, animalOrderType, animalOrderPrice, dependentName, supplierName " +
+	"FROM animalorder " +
 	"WHERE animalOrderID = ?;";
 	
 	private static final String SELECT_ALL_ANIMAL_ORDERS = // Select all animal order
 	"SELECT * " +
-	"FROM AnimalOrder;";
+	"FROM animalorder " +
+	"ORDER BY animalOrderID;";
 	
 	private static final String DELETE_ANIMAL_ORDER_BY_ID = // Delete 1 animal order by id
-	"DELETE * " +
-	"FROM AnimalOrder " +
+	"DELETE FROM animalorder " +
 	"WHERE animalOrderID = ?;";
 	
 	private static final String UPDATE_ANIMAL_ORDER_BY_ID = // Update 1 animal order by id
-	"UPDATE AnimalOrder " +
-	"SET animalOrderType = ?, animalOrderPrice = ?, dependentName = ? " +
+	"UPDATE animalorder " +
+	"SET animalOrderType = ?, animalOrderPrice = ?, dependentName = ?, supplierName = ?" +
 	"WHERE animalOrderID = ?;";
 	
 	// ------------------------------------------------------------------------------
@@ -50,6 +50,11 @@ public class AnimalOrderDAO {
 			sqlCreate.setString(1, animalOrder.getAnimalOrderType());
 			sqlCreate.setDouble(2, animalOrder.getAnimalOrderPrice());
 			sqlCreate.setString(3, animalOrder.getDependentName());
+			if(animalOrder.getSupplierName().equals("")) {
+				sqlCreate.setString(4, null); 
+			} else {
+				sqlCreate.setString(4, animalOrder.getSupplierName());
+			}
 			
 			// Execute SQL
 			sqlCreate.executeUpdate();
@@ -78,7 +83,12 @@ public class AnimalOrderDAO {
 			sqlUpdate.setString(1, animalOrder.getAnimalOrderType());
 			sqlUpdate.setDouble(2, animalOrder.getAnimalOrderPrice());
 			sqlUpdate.setString(3, animalOrder.getDependentName());
-			sqlUpdate.setInt(4, animalOrder.getAnimalOrderID());
+			if(animalOrder.getSupplierName().equals("")) {
+				sqlUpdate.setString(4, null); 
+			} else {
+				sqlUpdate.setString(4, animalOrder.getSupplierName());
+			}
+			sqlUpdate.setInt(5, animalOrder.getAnimalOrderID());
 				
 			rowUpdated = sqlUpdate.executeUpdate() > 0;
 				
@@ -113,7 +123,8 @@ public class AnimalOrderDAO {
 					String animalOrderType = result.getString("animalOrderType");
 					double animalOrderPrice = result.getDouble("animalOrderPrice");
 					String dependentName = result.getString("dependentName");
-					animalOrder = new AnimalOrder(id, animalOrderType, animalOrderPrice, dependentName);
+					String supplierName = result.getString("supplierName");
+					animalOrder = new AnimalOrder(id, animalOrderType, animalOrderPrice, dependentName, supplierName);
 				}
 			} // close try{}
 			
@@ -146,7 +157,9 @@ public class AnimalOrderDAO {
 					String animalOrderType = result.getString("animalOrderType");
 					double animalOrderPrice = result.getDouble("animalOrderPrice");
 					String dependentName = result.getString("dependentName");
-					animalOrderList.add(new AnimalOrder(animalOrderID, animalOrderType, animalOrderPrice, dependentName));
+					String supplierName = result.getString("supplierName");
+					
+					animalOrderList.add(new AnimalOrder(animalOrderID, animalOrderType, animalOrderPrice, dependentName, supplierName));
 				} 
 			} // close try{}
 			

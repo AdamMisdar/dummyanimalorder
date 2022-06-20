@@ -45,7 +45,7 @@ public class ConnectionPool {
 		String password = "system";
 		String dbUrl = "jdbc:postgresql://"
 						+ "localhost:5432"
-						+ "/QurbanDAOTest?sslmode=require"; // '?sslmode=require' : it's to connect to the database from our machine
+						+ "/QurbanDAOTest"; // '?sslmode=require' : it's to connect to the database from our machine
 		
 		try {
 			return DriverManager.getConnection(dbUrl, username, password);

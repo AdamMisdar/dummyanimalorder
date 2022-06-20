@@ -11,7 +11,7 @@ import com.qurban.javabean.*;
 
 
 
-@WebServlet("/AnimalOrderServlet")
+@WebServlet("/")
 public class AnimalOrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
      private AnimalOrderDAO animalOrderDAO;
@@ -66,7 +66,7 @@ public class AnimalOrderServlet extends HttpServlet {
 			}
 			break;
 			
-		case "edit":
+		case "/edit":
 			try {
 				showEditForm(request, response);
 			} catch (SQLException e) {
@@ -118,7 +118,7 @@ public class AnimalOrderServlet extends HttpServlet {
 	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 			
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("animal-order-form.jsp");
 		dispatcher.forward(request, response);
 	}
 	
@@ -129,8 +129,10 @@ public class AnimalOrderServlet extends HttpServlet {
 		String animalOrderType = request.getParameter("animalOrderType");
 		double animalOrderPrice = Double.parseDouble(request.getParameter("animalOrderPrice"));
 		String dependentName = request.getParameter("dependentName");
+		String supplierName = request.getParameter("supplierName");
+		
 			
-		AnimalOrder newAnimalOrder = new AnimalOrder(animalOrderType, animalOrderPrice, dependentName);
+		AnimalOrder newAnimalOrder = new AnimalOrder(animalOrderType, animalOrderPrice, dependentName, supplierName);
 		animalOrderDAO.insertAnimalOrder(newAnimalOrder);
 		response.sendRedirect("list");
 	
@@ -153,8 +155,8 @@ public class AnimalOrderServlet extends HttpServlet {
 		int animalOrderID = Integer.parseInt(request.getParameter("animalOrderID"));
 		AnimalOrder existingAnimalOrder = animalOrderDAO.selectAnimalOrder(animalOrderID);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("user-form.jsp");
-		request.setAttribute("user", existingAnimalOrder);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("animal-order-form.jsp");
+		request.setAttribute("animalOrder", existingAnimalOrder);
 		dispatcher.forward(request, response);
 		
 	}
@@ -167,8 +169,9 @@ public class AnimalOrderServlet extends HttpServlet {
 		String animalOrderType = request.getParameter("animalOrderType");
 		double animalOrderPrice = Double.parseDouble(request.getParameter("animalOrderPrice"));
 		String dependentName = request.getParameter("dependentName");
+		String supplierName = request.getParameter("supplierName");
 			
-		AnimalOrder animalOrder = new AnimalOrder(animalOrderID, animalOrderType, animalOrderPrice, dependentName);
+		AnimalOrder animalOrder = new AnimalOrder(animalOrderID, animalOrderType, animalOrderPrice, dependentName, supplierName);
 		animalOrderDAO.updateAnimalOrder(animalOrder);
 		response.sendRedirect("list");
 	}
@@ -179,7 +182,7 @@ public class AnimalOrderServlet extends HttpServlet {
 			
 			List<AnimalOrder> listAnimalOrder = animalOrderDAO.selectAllAnimalOrders();
 			request.setAttribute("listAnimalOrder", listAnimalOrder);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("user-list.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("animal-order-list.jsp");
 			dispatcher.forward(request, response);
 			
 		}
